@@ -3,7 +3,7 @@ function Footer() {
         <footer className="mt-auto w-full max-w-[85rem] py-5 px-4 sm:px-6 lg:px-8 mx-auto font-mono">
             <div className="text-center">
                 <div className="mt-3">
-                    <p className="text-gray-500">Built with ❤️ by <a className="text-orange-400 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium" href="#">Sonu-Hansda</a></p>
+                    <p className="text-gray-500">Built with ❤️ by <a className="text-orange-400 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium" href="https://github.com/Sonu-Hansda/">Sonu-Hansda</a></p>
                     <p className="text-gray-500">
                         © 2025 PlayLink.
                     </p>
