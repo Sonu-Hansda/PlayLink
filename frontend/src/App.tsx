@@ -12,7 +12,6 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <Headers />
       <section className="container flex-grow border-b border-gray-800">
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/player" element={<Player />} />
@@ -20,7 +19,6 @@ function App() {
           <Route path="/disclaimer" element={<Disclaimer/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
-        
       </section>
       <Footer />
     </div>
