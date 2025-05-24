@@ -1,8 +1,8 @@
 import { useState } from "react";
 import MusicIcon from "../assets/icons/MusicIcon";
 import VideoIcon from "../assets/icons/VideoIcon";
-import { useFileContext } from "../context/FileContext";
 import { useNavigate } from "react-router-dom";
+import { useFileContext } from "../context/useFileContext";
 
 export default function Home() {
     const navigate = useNavigate();

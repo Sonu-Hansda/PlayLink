@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useFileContext } from "../context/FileContext";
 import AudioPlayer from "../components/AudioPlayer";
 import VideoPlayer from "../components/VideoPlayer";
+import { useFileContext } from "../context/useFileContext";
 
 export default function Player() {
   const { files, type, resetContext } = useFileContext();

@@ -1,6 +1,3 @@
-// src/pages/Disclaimer.tsx
-import React from "react";
-
 export default function Disclaimer() {
   return (
     <div className="min-h-screen bg-gray-900 text-white py-12 px-4">
