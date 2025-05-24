@@ -12,7 +12,6 @@ export default function AudioPlayer({ file, playlist }: Props) {
   const [currentTime, setCurrentTime] = useState(0);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [audioUrl, setAudioUrl] = useState<string>("");
-  const [mounted, setMounted] = useState(false);
 
   // Initialize with first file
   useEffect(() => {
@@ -21,10 +20,9 @@ export default function AudioPlayer({ file, playlist }: Props) {
       setAudioUrl(url);
       setCurrentTrackIndex(0);
     }
-    setMounted(true);
   }, [playlist, audioUrl]);
 
-  // Track name logic
+  // Track name 
   const trackName = playlist[currentTrackIndex]?.name.split(".").slice(0, -1).join(".") || "Unknown Track";
   const artist = "Unknown Artist";
 
