@@ -94,12 +94,12 @@ export default function AudioPlayer({ file, playlist }: Props) {
 
     // Cleanup old URL
     if (audioUrl) URL.revokeObjectURL(audioUrl);
-    
+
     // Create new URL and update state
     const url = URL.createObjectURL(newFile);
     setAudioUrl(url);
     setCurrentTrackIndex(index);
-    
+
     // Update audio source and play
     const audio = audioRef.current;
     if (audio) {
@@ -139,33 +139,29 @@ export default function AudioPlayer({ file, playlist }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col-reverse md:flex-row rounded-sm px-2">
+    <div className="md:min-h-screen bg-gray-900 text-white flex flex-col-reverse md:flex-row rounded-sm px-2">
       {/* Playlist Sidebar */}
-      <div className="w-full md:w-64 p-12 md:p-4 overflow-y-auto border-b md:border-r border-gray-800">
+      <div className="w-full md:w-64 px-12 md:p-4 overflow-y-auto border-b md:border-r border-gray-800">
         <h2 className="text-lg font-semibold mb-4">Your Playlist</h2>
         <ul className="space-y-2">
           {playlist.map((track, index) => {
             const isCurrent = index === currentTrackIndex;
             const isUpcoming = index > currentTrackIndex;
-            
+
             return (
               <li
                 key={index}
                 onClick={() => playTrack(index)}
-                className={`p-3 rounded-lg cursor-pointer transition-all duration-300 transform ${
-                  isCurrent
-                    ? "bg-gradient-to-r from-orange-500 to-yellow-500 text-black font-bold scale-105 z-10 relative"
-                    : "hover:bg-gray-700"
-                } ${
-                  isUpcoming ? "opacity-80 hover:opacity-100" : ""
-                } ${
-                  isCurrent ? "animate-slideDown" : ""
-                }`}
+                className={`p-3 rounded-lg cursor-pointer transition-all duration-300 transform ${isCurrent
+                  ? "bg-orange-400 text-black font-bold scale-105 z-10 relative"
+                  : "hover:bg-gray-700"
+                  } ${isUpcoming ? "opacity-80 hover:opacity-100" : ""
+                  } ${isCurrent ? "animate-slideDown" : ""
+                  }`}
               >
-                {/* <div className="font-medium">{track.name.split(".").slice(0, 10).join(".")}</div> */}
-                <div className="font-medium">{track.name.slice(0,40)}...</div>
-                <div className="text-xs text-gray-400">Unknown Artist</div>
-                
+                <div className="font-medium">{track.name.slice(0, 40)}...</div>
+                <div className={`text-xs ${isCurrent ? 'text-gray-100' : 'text-gray-400'}`}>Unknown Artist</div>
+
                 {/* Upcoming indicator */}
                 {isUpcoming && (
                   <div className="absolute right-2 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full bg-gray-400"></div>
@@ -208,8 +204,8 @@ export default function AudioPlayer({ file, playlist }: Props) {
 
           {/* Controls */}
           <div className="flex items-center justify-between mt-4">
-            <button 
-              onClick={goToPrevious} 
+            <button
+              onClick={goToPrevious}
               className="text-white hover:text-orange-400 focus:outline-none"
               aria-label="Previous"
             >
@@ -234,8 +230,8 @@ export default function AudioPlayer({ file, playlist }: Props) {
               )}
             </button>
 
-            <button 
-              onClick={goToNext} 
+            <button
+              onClick={goToNext}
               className="text-white hover:text-orange-400 focus:outline-none"
               aria-label="Next"
             >
@@ -246,9 +242,9 @@ export default function AudioPlayer({ file, playlist }: Props) {
           </div>
 
           {/* Audio Element */}
-          <audio 
-            ref={audioRef} 
-            src={audioUrl} 
+          <audio
+            ref={audioRef}
+            src={audioUrl}
             preload="metadata"
             onLoadedMetadata={() => {
               if (audioRef.current) {
